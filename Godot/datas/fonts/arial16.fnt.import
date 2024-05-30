@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://tlhpj26j06dj"
+path="res://.godot/imported/arial16.fnt-7a1dd4d42154f7dee1a20bc3ffaf5b85.fontdata"
+
+[deps]
+
+source_file="res://datas/fonts/arial16.fnt"
+dest_files=["res://.godot/imported/arial16.fnt-7a1dd4d42154f7dee1a20bc3ffaf5b85.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
