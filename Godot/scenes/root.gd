@@ -3,6 +3,8 @@ class_name RootScene extends Node2D
 @onready var viewport = get_viewport()
 
 var current_scene = null
+var data: Data
+var user: User
 var soundManager: SoundManager
 
 var scenes = {
@@ -10,6 +12,8 @@ var scenes = {
 }
 
 func _init():
+	data = Data.new()
+	user = User.new()
 	soundManager = SoundManager.new()
 	soundManager.root = self
 
