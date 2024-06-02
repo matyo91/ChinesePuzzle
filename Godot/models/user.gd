@@ -1,10 +1,22 @@
 class_name User extends Object
 
-var name: String
+var theme: String
+var isCardLayout: bool
+var isSoundOn: bool
+var moves: Array
+var initBoard: Dictionary
 
 func _init():
+	theme = defaultTheme()
+	isCardLayout = false
+	isSoundOn = false
+	moves = []
+	initBoard = {}
 	
 	pass
+
+func defaultTheme() -> String:
+	return 'chinese'
 
 func load() -> Dictionary:
 	if not FileAccess.file_exists("user://chinesepuzzle.save"):
@@ -19,7 +31,7 @@ func load() -> Dictionary:
 		return {'success': false}
 	var json_data = json.get_data()
 	
-	name = json_data['user']['name']
+	theme = json_data['user']['theme']
 	
 	return {
 		'success': true,
@@ -32,7 +44,7 @@ func save():
 	var json_string = JSON.stringify({
 		'savedate': Time.get_date_dict_from_system(),
 		'user': {
-			'name': name,
+			'theme': theme,
 		}
 	})
 	
