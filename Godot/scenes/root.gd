@@ -37,7 +37,7 @@ func set_current_scene(scene: String):
 	size_changed()
 
 func size_changed():
-	var size = Vector2(512, 342)
+	var size = Vector2(960, 640)
 	
 	var current_size = DisplayServer.window_get_size()
 	

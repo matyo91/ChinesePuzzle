@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhoimb7ousrwk"]
+[gd_scene load_steps=3 format=3 uid="uid://dhoimb7ousrwk"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_nwa3a"]
+[ext_resource type="Texture2D" uid="uid://d2uqb2qa51d1x" path="res://datas/images/bgPattern.png" id="2_higro"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_nwa3a")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 960.0
+offset_bottom = 640.0
+texture = ExtResource("2_higro")
+stretch_mode = 1
