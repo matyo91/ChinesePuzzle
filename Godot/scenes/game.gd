@@ -27,8 +27,8 @@ func randInitBoard():
 	var deck = []
 	
 	for k in range(1, 3):
-		for color in root.data.CardPlayColor:
-			for rank in root.data.CardPlayRank:
+		for color in CardPlay.CardPlayColor:
+			for rank in CardPlay.CardPlayRank:
 				deck.push_back({
 					"color": color,
 					"rank": rank
