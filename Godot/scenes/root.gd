@@ -43,6 +43,3 @@ func size_changed():
 	
 	var scale_factor = Vector2(current_size.x / size.x, current_size.y / size.y)
 	set_scale(scale_factor)
-	
-	if current_scene != null:
-		current_scene.update_layout()
