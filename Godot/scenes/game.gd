@@ -3,12 +3,17 @@ class_name GameScene extends Node2D
 var root: RootScene
 var bgMusicTheme: int
 var board: Dictionary
+var cards: Array[Card]
+var boardCards: Array[BoardCard]
 
 func _init():
+	board = {}
 	for i in range(8):
-		board[i] = {}
 		for j in range(14):
-			board[i][j] = null
+			var coord = Vector2(i, j)
+			board[coord] = null
+	cards = []
+	boardCards = []
 
 func _ready() -> void:
 	bgMusicTheme = root.data.BackgroundMusicThemes.ThemeNone
@@ -23,12 +28,18 @@ func _ready() -> void:
 	
 	layout()
 
+func newGame() -> void:
+	root.soundManager.play('shuffle')
+
+func retryGame() -> void:
+	root.soundManager.play('shuffle')
+
 func randInitBoard():
 	var deck = []
 	
 	for k in range(1, 3):
-		for color in CardPlay.CardPlayColor:
-			for rank in CardPlay.CardPlayRank:
+		for color in Card.CardColor:
+			for rank in Card.CardRank:
 				deck.push_back({
 					"color": color,
 					"rank": rank
@@ -47,13 +58,21 @@ func randInitBoard():
 			k += 1
 
 func loadBoard():
-	pass
-
-func newGame() -> void:
-	root.soundManager.play('shuffle')
-	
-func retryGame() -> void:
-	root.soundManager.play('shuffle')
+	for move in root.user.getMoves():
+		var switch = board[move.to]
+		board[move.to] = board[move.from]
+		board[move.from] = switch
 
 func layout():
-	pass
+	var BoardCardScene = preload("res://entities/board_card.tscn")
+	if boardCards.size() == 0:
+		for i in range(8):
+			for j in range(14):
+				var boardCard = BoardCardScene.instantiate()
+				add_child(boardCard)
+				boardCards.append(boardCard)
+	
+	var newCards = []
+	
+	for coord in board:
+		var i = 0

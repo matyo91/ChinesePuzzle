@@ -3,7 +3,7 @@ class_name User extends Object
 var theme: String
 var isCardLayout: bool
 var isSoundOn: bool
-var moves: Array
+var moves: Array[Move]
 var initBoard: Dictionary
 
 func _init():
@@ -12,8 +12,6 @@ func _init():
 	isSoundOn = false
 	moves = []
 	initBoard = {}
-	
-	pass
 
 func defaultTheme() -> String:
 	return 'chinese'
@@ -36,13 +34,13 @@ func getIsSoundOn() -> bool:
 func setIsSoundOn(_isSoundOn: bool):
 	isSoundOn = _isSoundOn
 
-func getMoves() -> Array:
+func getMoves() -> Array[Move]:
 	return moves
 
 func clearMoves():
 	moves = []
 	
-func pushMove(_move):
+func pushMove(_move: Move):
 	moves.append(_move)
 
 func popMove():

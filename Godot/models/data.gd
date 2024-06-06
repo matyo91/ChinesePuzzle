@@ -20,3 +20,8 @@ func getThemes() -> Array[String]:
 		'stripes',
 		'vivid',
 	]
+
+func getNodePath(theme, isCardLayout, mode, file, sprite):
+	var path = 'res://data/images/' + ('themes/' + theme if mode == 'theme' else 'ui')
+	var plistPath = path + '.plist'
+	var texturePath = path + '.png'

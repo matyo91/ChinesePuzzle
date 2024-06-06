@@ -1,13 +1,13 @@
-class_name CardPlay extends Node2D
+class_name Card extends Node2D
 
-enum CardPlayColor {
+enum CardColor {
 	Spade = 1,
 	Club = 2,
 	Heart = 3,
 	Diamond = 4,
 }
 
-enum CardPlayRank {
+enum CardRank {
 	Ace = 1,
 	Two = 2,
 	Three = 3,
@@ -23,5 +23,6 @@ enum CardPlayRank {
 	King = 13,
 }
 
-var color: CardPlayColor
-var rank: CardPlayRank
+var color: CardColor
+var rank: CardRank
+var isLocked: bool
