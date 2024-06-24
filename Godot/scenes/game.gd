@@ -27,6 +27,10 @@ func _ready() -> void:
 	loadBoard()
 	
 	layout()
+	
+	var sprite = root.data.getThemeSprite('chinese', true, 'rank_H2.png')
+	add_child(sprite)
+	sprite.position = Vector2(100, 100)
 
 func newGame() -> void:
 	root.soundManager.play('shuffle')
