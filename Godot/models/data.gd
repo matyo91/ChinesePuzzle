@@ -53,6 +53,38 @@ func getSprite(theme: String, isCardLayout: bool, mode: String, file: String) ->
 	var plistPath = path + '.plist'
 	var texturePath = path + '.png'
 	
+	var sprites = {}
+	if mode == 'ui':
+		sprites['menuMask'] = 'auto'
+		sprites['menuContainer'] = 'auto'
+		sprites['menuItemYes'] = 'auto'
+		sprites['menuItemNo'] = 'auto'
+		sprites['menuItemOk'] = 'auto'
+		sprites['menuItemThemeClassic'] = 'auto'
+		sprites['menuItemThemeChinese'] = 'auto'
+		sprites['menuItemThemeCircle'] = 'auto'
+		sprites['menuItemThemePolkadots'] = 'auto'
+		sprites['menuItemThemeSeamless'] = 'auto'
+		sprites['menuItemThemeSkullshearts'] = 'auto'
+		sprites['menuItemThemeSplash'] = 'auto'
+		sprites['menuItemThemeSpring'] = 'auto'
+		sprites['menuItemThemeStripes'] = 'auto'
+		sprites['menuItemThemeVivid'] = 'auto'
+	elif mode == 'theme':
+		sprites['bg'] = 'auto'
+		sprites['cardplaybg'] = 'auto'
+		sprites['cardboardempty'] = 'auto'
+		sprites['cardboardyes'] = 'auto'
+		sprites['cardboardno'] = 'auto'
+		sprites['cardtouched'] = 'auto'
+		sprites['newBtn'] = 'auto'
+		sprites['retryBtn'] = 'auto'
+		sprites['hintBtn'] = 'auto'
+		sprites['soundOnBtn'] = 'auto'
+		sprites['soundOffBtn'] = 'auto'
+		sprites['themeBtn'] = 'auto'
+		sprites['undoBtn'] = 'auto'
+	
 	var sprite = Sprite2D.new()
 	sprite.texture = load(texturePath)
 	sprite.region_rect = getTextureRect(plistPath, file)
