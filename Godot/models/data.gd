@@ -55,40 +55,395 @@ func getSprite(theme: String, isCardLayout: bool, mode: String, file: String) ->
 	
 	var sprites = {}
 	if mode == 'ui':
-		sprites['menuMask'] = 'auto'
-		sprites['menuContainer'] = 'auto'
-		sprites['menuItemYes'] = 'auto'
-		sprites['menuItemNo'] = 'auto'
-		sprites['menuItemOk'] = 'auto'
-		sprites['menuItemThemeClassic'] = 'auto'
-		sprites['menuItemThemeChinese'] = 'auto'
-		sprites['menuItemThemeCircle'] = 'auto'
-		sprites['menuItemThemePolkadots'] = 'auto'
-		sprites['menuItemThemeSeamless'] = 'auto'
-		sprites['menuItemThemeSkullshearts'] = 'auto'
-		sprites['menuItemThemeSplash'] = 'auto'
-		sprites['menuItemThemeSpring'] = 'auto'
-		sprites['menuItemThemeStripes'] = 'auto'
-		sprites['menuItemThemeVivid'] = 'auto'
+		sprites['menuMask.png'] = [{
+			'from': 'menuMask.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuContainer.png'] = [{
+			'from': 'menuContainer.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemYes.png'] = [{
+			'from': 'menuItemYes.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemNo.png'] = [{
+			'from': 'menuItemNo.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemOk.png'] = [{
+			'from': 'menuItemOk.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemThemeClassic.png'] = [{
+			'from': 'menuItemThemeClassic.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemThemeChinese.png'] = [{
+			'from': 'menuItemThemeChinese.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemThemeCircle.png'] = [{
+			'from': 'menuItemThemeCircle.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemThemePolkadots.png'] = [{
+			'from': 'menuItemThemePolkadots.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemThemeSeamless.png'] = [{
+			'from': 'menuItemThemeSeamless.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemThemeSkullshearts.png'] = [{
+			'from': 'menuItemThemeSkullshearts.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemThemeSplash.png'] = [{
+			'from': 'menuItemThemeSplash.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemThemeSpring.png'] = [{
+			'from': 'menuItemThemeSpring.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemThemeStripes.png'] = [{
+			'from': 'menuItemThemeStripes.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['menuItemThemeVivid.png'] = [{
+			'from': 'menuItemThemeVivid.png',
+			'to': Vector2(0, 0),
+		}]
 	elif mode == 'theme':
-		sprites['bg'] = 'auto'
-		sprites['cardplaybg'] = 'auto'
-		sprites['cardboardempty'] = 'auto'
-		sprites['cardboardyes'] = 'auto'
-		sprites['cardboardno'] = 'auto'
-		sprites['cardtouched'] = 'auto'
-		sprites['newBtn'] = 'auto'
-		sprites['retryBtn'] = 'auto'
-		sprites['hintBtn'] = 'auto'
-		sprites['soundOnBtn'] = 'auto'
-		sprites['soundOffBtn'] = 'auto'
-		sprites['themeBtn'] = 'auto'
-		sprites['undoBtn'] = 'auto'
+		sprites['bg.png'] = [{
+			'from': 'bg.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['cardplaybg.png'] = [{
+			'from': 'cardplaybg.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['cardboardempty.png'] = [{
+			'from': 'cardboardempty.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['cardboardyes.png'] = [{
+			'from': 'cardboardyes.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['cardboardno.png'] = [{
+			'from': 'cardboardno.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['cardtouched.png'] = [{
+			'from': 'cardtouched.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['newBtn.png'] = [{
+			'from': 'newBtn.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['retryBtn.png'] = [{
+			'from': 'retryBtn.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['hintBtn.png'] = [{
+			'from': 'hintBtn.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['soundOnBtn.png'] = [{
+			'from': 'soundOnBtn.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['soundOffBtn.png'] = [{
+			'from': 'soundOffBtn.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['themeBtn.png'] = [{
+			'from': 'themeBtn.png',
+			'to': Vector2(0, 0),
+		}]
+		sprites['undoBtn.png'] = [{
+			'from': 'undoBtn.png',
+			'to': Vector2(0, 0),
+		}]
+		
+		var cardBGTextureRect = getTextureRect(plistPath, 'cardbg.png')
+		var centerPosition = cardBGTextureRect.size / 2
+		
+		var colors = ['D', 'S', 'H', 'C']
+		var ranks = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
+
+		for color in colors:
+			for rank in ranks:
+				if isCardLayout and rank == "A":
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'rank_' + color + rank + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'rank_' + color + rank + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}]
+				elif isCardLayout and rank == "2":
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}]
+				elif isCardLayout and rank == "3":
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}]
+				elif isCardLayout and rank == "4":
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}]
+				elif isCardLayout and rank == "5":
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}]
+				elif isCardLayout and rank == "6":
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}]
+				elif isCardLayout and rank == "7":
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}]
+				elif isCardLayout and rank == "8":
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, 1.5 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, 2.5 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}]
+				elif isCardLayout and rank == "9":
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 4 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 4 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, 1.5 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}]
+				elif isCardLayout and rank == "10":
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 4 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 2 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 4 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, 1.5 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, 3.5 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}]
+				elif isCardLayout and (rank == "J" or rank == "Q" or rank == "K"):
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 2) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 2) - centerPosition,
+					}, {
+						'from': 'rank_' + color + rank + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 4 * cardBGTextureRect.size.y / 5) - centerPosition,
+					}, {
+						'from': 'rank_' + color + rank + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 5) - centerPosition,
+					}]
+				else:
+					sprites['card_' + color + rank + '.png'] = [{
+						'from': 'cardbg.png',
+						'to': Vector2(0, 0)
+					}, {
+						'from': 'rank_' + color + rank + '.png',
+						'to': Vector2(cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'big_' + color + '.png',
+						'to': Vector2(2 * cardBGTextureRect.size.x / 4, cardBGTextureRect.size.y / 4) - centerPosition,
+					}, {
+						'from': 'small_' + color + '.png',
+						'to': Vector2(3 * cardBGTextureRect.size.x / 4, 3 * cardBGTextureRect.size.y / 4) - centerPosition,
+					}]
+		
+	var texture = load(texturePath)
 	
 	var sprite = Sprite2D.new()
-	sprite.texture = load(texturePath)
-	sprite.region_rect = getTextureRect(plistPath, file)
-	sprite.region_enabled = true
+	
+	for index in range(sprites[file].size()):
+		var zone = sprites[file][index]
+		var child = sprite if index == 0 else Sprite2D.new()
+		child.texture = texture
+		child.region_rect = getTextureRect(plistPath, zone['from'])
+		child.region_enabled = true
+		child.position = zone.to
+		
+		if index > 0:
+			sprite.add_child(child)
 	
 	return sprite
 

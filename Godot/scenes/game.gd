@@ -28,7 +28,7 @@ func _ready() -> void:
 	
 	layout()
 	
-	var sprite = root.data.getThemeSprite('chinese', true, 'rank_H2.png')
+	var sprite = root.data.getThemeSprite('chinese', true, 'card_H8.png')
 	add_child(sprite)
 	sprite.position = Vector2(100, 100)
 
