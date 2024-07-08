@@ -7,6 +7,9 @@ var cards: Array[Card]
 var boardCards: Array[BoardCard]
 
 func _init():
+	bgMusicTheme = root.data.BackgroundMusicThemes.ThemeNone
+	root.user.load()
+	
 	board = {}
 	for i in range(8):
 		for j in range(14):
@@ -16,9 +19,6 @@ func _init():
 	boardCards = []
 
 func _ready() -> void:
-	bgMusicTheme = root.data.BackgroundMusicThemes.ThemeNone
-	
-	root.user.load()
 	
 	var initBoard = root.user.getInitBoard()
 	if(initBoard.size() == 0):
