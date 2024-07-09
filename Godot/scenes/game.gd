@@ -14,17 +14,6 @@ func _ready() -> void:
 	playBackgroundMusic(root.user.getIsSoundOn())
 	
 	getBoard()
-	#var initBoard = root.user.getInitBoard()
-	#if(initBoard.size() == 0):
-	#	randInitBoard()
-	
-	#loadBoard()
-	
-	#layout()
-	
-	var sprite = root.data.getThemeSprite('chinese', true, 'card_H8.png')
-	add_child(sprite)
-	sprite.position = Vector2(100, 100)
 
 func getBoard() -> Board:
 	if menu:
@@ -33,6 +22,7 @@ func getBoard() -> Board:
 	
 	if board == null:
 		board = Board.new()
+		board.root = root
 		add_child(board)
 	
 	return board
@@ -43,6 +33,7 @@ func getMenu() -> Menu:
 func getMenuWithLayout(layout: Menu.LayoutType) -> Menu:
 	if menu == null:
 		menu = Menu.new()
+		menu.root = root
 		add_child(menu)
 
 	return menu

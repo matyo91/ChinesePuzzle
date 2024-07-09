@@ -17,3 +17,5 @@ enum Tag {
 	RetryYes = 5,
 	RetryNo = 6,
 }
+
+var root: RootScene

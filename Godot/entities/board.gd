@@ -1,10 +1,11 @@
 class_name Board extends Node2D
 
+var root: RootScene
 var board: Dictionary
 var cards: Array[Card]
 var boardCards: Array[BoardCard]
 
-func _init():
+func _ready():
 	board = {}
 	for i in range(8):
 		for j in range(14):
@@ -12,7 +13,18 @@ func _init():
 			board[coord] = null
 	cards = []
 	boardCards = []
-
+	
+	#var initBoard = root.user.getInitBoard()
+	#if(initBoard.size() == 0):
+	#	randInitBoard()
+	
+	#loadBoard()
+	
+	#layout()
+	
+	var sprite = root.data.getThemeSprite('chinese', true, 'card_H8.png')
+	add_child(sprite)
+	sprite.position = Vector2(100, 100)
 
 func randInitBoard():
 	var deck = []
