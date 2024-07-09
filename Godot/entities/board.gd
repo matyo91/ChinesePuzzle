@@ -57,3 +57,15 @@ func layout():
 	
 	for coord in board:
 		var i = 0
+
+func newGame():
+	#@_randInitBoard()
+	#@retryGame()
+	pass
+
+func retryGame():
+	#@_gs.getConf().clearMoves()
+	#@_loadBoard()
+	#@layout()
+	#@_gs.getConf().save() #save conf state
+	pass

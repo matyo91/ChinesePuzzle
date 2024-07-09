@@ -19,7 +19,7 @@ func stopSound(sound: String):
 		remove_child(sounds[soundPath])
 		sounds.erase(soundPath)
 
-func stopSounds():
-	for sound in sounds:
-		remove_child(sounds[sound])
-		sounds.erase(sound)
+func stopSounds(selectedSounds = null):
+	selectedSounds = sounds if selectedSounds == null else selectedSounds
+	for sound in selectedSounds:
+		stopSound(sound)
