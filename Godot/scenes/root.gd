@@ -14,8 +14,7 @@ var scenes = {
 func _init():
 	data = Data.new()
 	user = User.new()
-	soundManager = SoundManager.new()
-	soundManager.root = self
+	soundManager = SoundManager.new_with_root(self)
 
 func _ready() -> void:
 	viewport.connect("size_changed", size_changed)

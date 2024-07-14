@@ -7,46 +7,46 @@ var moves: Array[Move]
 var initBoard: Dictionary
 
 func _init():
-	theme = defaultTheme()
+	theme = default_theme()
 	isCardLayout = false
 	isSoundOn = false
 	moves = []
 	initBoard = {}
 
-func defaultTheme() -> String:
+func default_theme() -> String:
 	return 'chinese'
 
-func getTheme() -> String:
+func get_theme() -> String:
 	return theme
 
-func setTheme(_theme: String):
+func set_theme(_theme: String):
 	theme = _theme
 
-func getIsCardLayout() -> bool:
+func get_is_card_layout() -> bool:
 	return isCardLayout
 
-func setIsCardLayout(_isCardLayout: bool):
+func set_is_card_layout(_isCardLayout: bool):
 	isCardLayout = _isCardLayout
 	
-func getIsSoundOn() -> bool:
+func get_is_sound_on() -> bool:
 	return isSoundOn;
 
-func setIsSoundOn(_isSoundOn: bool):
+func set_is_sound_on(_isSoundOn: bool):
 	isSoundOn = _isSoundOn
 
-func getMoves() -> Array[Move]:
+func get_moves() -> Array[Move]:
 	return moves
 
-func clearMoves():
+func clear_moves():
 	moves = []
 	
-func pushMove(_move: Move):
+func push_move(_move: Move):
 	moves.append(_move)
 
-func popMove():
+func pop_move():
 	moves.pop_back()
 	
-func getInitBoard() -> Dictionary:
+func get_init_board() -> Dictionary:
 	return initBoard
 
 func load() -> Dictionary:

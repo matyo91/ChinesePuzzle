@@ -19,3 +19,9 @@ enum Tag {
 }
 
 var root: RootScene
+
+static func new_with_root(a_root: RootScene) -> Menu:
+	var menu = Menu.new()
+	menu.root = a_root
+	
+	return menu

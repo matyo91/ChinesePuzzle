@@ -13,41 +13,44 @@ func _ready() -> void:
 	
 	playBackgroundMusic(root.user.getIsSoundOn())
 	
-	getBoard()
+	get_board()
+	#var initBoard = root.user.getInitBoard()
+	#if(initBoard.size() == 0):
+	#	randInitBoard()
+	
+	#loadBoard()
+	
+	#layout()
+	
+	var sprite = root.data.get_theme_sprite('chinese', true, 'card_H8.png')
+	add_child(sprite)
+	sprite.position = Vector2(100, 100)
 
-func getBoard() -> Board:
+func get_board() -> Board:
 	if menu:
 		remove_child(menu)
 		menu = null
 	
 	if board == null:
-		board = Board.new()
-		board.root = root
+		board = Board.new_with_root(root)
 		add_child(board)
 	
 	return board
 
-func getMenu() -> Menu:
-	return getMenuWithLayout(Menu.LayoutType.None)
+func get_menu() -> Menu:
+	return get_menu_with_layout(Menu.LayoutType.None)
 	
-func getMenuWithLayout(layout: Menu.LayoutType) -> Menu:
+func get_menu_with_layout(layout: Menu.LayoutType) -> Menu:
 	if menu == null:
-		menu = Menu.new()
-		menu.root = root
+		menu = Menu.new_with_root(root)
 		add_child(menu)
 
 	return menu
 
-func newGame() -> void:
-	var board = getBoard()
-	board.newGame()
-	
+func new_game() -> void:
 	root.soundManager.play('shuffle')
 
-func retryGame() -> void:
-	var board = getBoard()
-	board.retryGame()
-	
+func retry_game() -> void:
 	root.soundManager.play('shuffle')
 
 func playBackgroundMusic(play: bool):
