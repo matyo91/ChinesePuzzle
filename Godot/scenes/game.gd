@@ -11,7 +11,7 @@ func _init():
 func _ready() -> void:
 	root.user.load()
 	
-	playBackgroundMusic(root.user.getIsSoundOn())
+	play_background_music(root.user.get_is_sound_on())
 	
 	get_board()
 	#var initBoard = root.user.getInitBoard()
@@ -53,7 +53,7 @@ func new_game() -> void:
 func retry_game() -> void:
 	root.soundManager.play('shuffle')
 
-func playBackgroundMusic(play: bool):
+func play_background_music(play: bool):
 	if play:
 		if bgMusicTheme == Data.BackgroundMusicThemes.Theme1:
 			root.soundManager.play('bgm2.mp3', true)
