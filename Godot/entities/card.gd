@@ -1,4 +1,4 @@
-class_name Card extends Node2D
+class_name Card extends Sprite2D
 
 enum CardColor {
 	Spade = 1,
@@ -26,27 +26,35 @@ enum CardRank {
 var root: RootScene
 var color: CardColor
 var rank: CardRank
-var is_locked: bool
+var is_locked: bool = false
+var is_face_up: bool = false
 
-static func new_with_root(a_root: RootScene) -> Card:
+static func new_with_root(_root: RootScene) -> Card:
 	var card = Card.new()
-	card.root = a_root
+	card.root = _root
 	
 	return card
 
-static func new_with_root_and_color_and_rank(a_root: RootScene, a_color: CardColor, a_rank: CardRank) -> Card:
-	var card = Card.new()
-	card.root = a_root
-	card.color = a_color
-	card.rank = a_rank
+static func new_with_root_and_color_and_rank(_root: RootScene, _color: CardColor, _rank: CardRank) -> Card:
+	var card = Card.new_with_root(_root)
+	card.set_color(_color)
+	card.set_rank(_rank)
 	
 	return card
 
 func get_color() -> CardColor:
 	return color
 
+func set_color(_color: CardColor) -> Card:
+	color = _color
+	return self
+
 func get_rank() -> CardRank:
 	return rank
+
+func set_rank(_rank: CardRank) -> Card:
+	rank = _rank
+	return self
 
 func get_is_locked() -> bool:
 	return is_locked
@@ -54,3 +62,13 @@ func get_is_locked() -> bool:
 func set_is_locked(_is_locked: bool) -> Card:
 	is_locked = _is_locked
 	return self
+
+func get_is_face_up() -> bool:
+	return is_locked
+
+func set_is_face_up(_is_face_up: bool) -> Card:
+	is_face_up = _is_face_up
+	return self
+
+func layout():
+	pass

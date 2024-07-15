@@ -48,7 +48,7 @@ func get_texture_rect(plistPath: String, frame: String) -> Rect2:
 	
 	return Rect2(Vector2(x, y), Vector2(width, height))
 
-func get_sprite(theme: String, is_card_layout: bool, mode: String, file: String) -> Sprite2D:
+func load_sprite(sprite: Sprite2D, theme: String, is_card_layout: bool, mode: String, file: String) -> Sprite2D:
 	var path = 'res://datas/images/' + ('themes/' + theme if mode == 'theme' else 'ui')
 	var plistPath = path + '.plist'
 	var texturePath = path + '.png'
@@ -432,8 +432,6 @@ func get_sprite(theme: String, is_card_layout: bool, mode: String, file: String)
 		
 	var texture = load(texturePath)
 	
-	var sprite = Sprite2D.new()
-	
 	for index in range(sprites[file].size()):
 		var zone = sprites[file][index]
 		var child = sprite if index == 0 else Sprite2D.new()
@@ -447,8 +445,8 @@ func get_sprite(theme: String, is_card_layout: bool, mode: String, file: String)
 	
 	return sprite
 
-func get_ui_sprite(is_card_layout: bool, file: String) -> Sprite2D:
-	return get_sprite('', is_card_layout, 'ui', file)
+func load_ui_sprite(sprite: Sprite2D, is_card_layout: bool, file: String) -> Sprite2D:
+	return load_sprite(sprite, '', is_card_layout, 'ui', file)
 
-func get_theme_sprite(theme: String, is_card_layout: bool, file: String) -> Sprite2D:
-	return get_sprite(theme, is_card_layout, 'theme', file)
+func load_theme_sprite(sprite: Sprite2D, theme: String, is_card_layout: bool, file: String) -> Sprite2D:
+	return load_sprite(sprite, theme, is_card_layout, 'theme', file)

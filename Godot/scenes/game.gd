@@ -22,9 +22,12 @@ func _ready() -> void:
 	
 	#layout()
 	
-	var sprite = root.data.get_theme_sprite('chinese', true, 'card_H8.png')
-	add_child(sprite)
-	sprite.position = Vector2(100, 100)
+	#var sprite = Sprite2D.new()
+	#root.data.load_theme_sprite(sprite, 'chinese', true, 'card_H8.png')
+	#add_child(sprite)
+	var card = Card.new_with_root_and_color_and_rank(root, Card.CardColor.Spade, Card.CardRank.Ace)
+	card.layout()
+	card.position = Vector2(100, 100)
 
 func get_board() -> Board:
 	if menu:
